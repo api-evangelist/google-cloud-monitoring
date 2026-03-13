@@ -1,0 +1,235 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://raw.githubusercontent.com/api-evangelist/google-cloud-monitoring/refs/heads/main/json-schema/json-schema.yml
+title: Google Cloud Monitoring Schema
+description: Schema defining the core resources of the Google Cloud Monitoring API.
+type: object
+properties:
+  timeSeries:
+    $ref: '#/$defs/TimeSeries'
+  alertPolicy:
+    $ref: '#/$defs/AlertPolicy'
+  uptimeCheckConfig:
+    $ref: '#/$defs/UptimeCheckConfig'
+  notificationChannel:
+    $ref: '#/$defs/NotificationChannel'
+  metricDescriptor:
+    $ref: '#/$defs/MetricDescriptor'
+$defs:
+  TimeSeries:
+    type: object
+    title: Time Series
+    description: A collection of data points describing the time-varying values of a metric.
+    properties:
+      metric:
+        type: object
+        properties:
+          type:
+            type: string
+            description: The metric type identifier.
+          labels:
+            type: object
+            additionalProperties:
+              type: string
+      resource:
+        type: object
+        properties:
+          type:
+            type: string
+            description: The monitored resource type.
+          labels:
+            type: object
+            additionalProperties:
+              type: string
+      metricKind:
+        type: string
+        enum:
+          - GAUGE
+          - DELTA
+          - CUMULATIVE
+      valueType:
+        type: string
+        enum:
+          - BOOL
+          - INT64
+          - DOUBLE
+          - STRING
+          - DISTRIBUTION
+      points:
+        type: array
+        items:
+          $ref: '#/$defs/Point'
+    required:
+      - metric
+      - resource
+  Point:
+    type: object
+    title: Point
+    description: A single data point in a time series.
+    properties:
+      interval:
+        type: object
+        properties:
+          startTime:
+            type: string
+            format: date-time
+          endTime:
+            type: string
+            format: date-time
+        required:
+          - endTime
+      value:
+        type: object
+        properties:
+          boolValue:
+            type: boolean
+          int64Value:
+            type: string
+          doubleValue:
+            type: number
+          stringValue:
+            type: string
+    required:
+      - interval
+      - value
+  AlertPolicy:
+    type: object
+    title: Alert Policy
+    description: A policy for generating alerts based on monitored resource conditions.
+    properties:
+      name:
+        type: string
+        description: The resource name of the alert policy.
+      displayName:
+        type: string
+        description: A short name or phrase used to identify the policy.
+      documentation:
+        type: object
+        properties:
+          content:
+            type: string
+          mimeType:
+            type: string
+      conditions:
+        type: array
+        items:
+          type: object
+        description: The conditions that trigger the alert.
+      combiner:
+        type: string
+        enum:
+          - AND
+          - OR
+          - AND_WITH_MATCHING_RESOURCE
+      enabled:
+        type: boolean
+        description: Whether the policy is enabled.
+      notificationChannels:
+        type: array
+        items:
+          type: string
+        description: Notification channels to notify when the alert fires.
+    required:
+      - displayName
+      - conditions
+      - combiner
+  UptimeCheckConfig:
+    type: object
+    title: Uptime Check Config
+    description: Configuration for an uptime check that monitors a resource.
+    properties:
+      name:
+        type: string
+      displayName:
+        type: string
+      period:
+        type: string
+        description: How often the uptime check runs.
+      timeout:
+        type: string
+        description: The maximum time to wait for the check.
+      httpCheck:
+        type: object
+        properties:
+          path:
+            type: string
+          port:
+            type: integer
+          useSsl:
+            type: boolean
+      monitoredResource:
+        type: object
+        properties:
+          type:
+            type: string
+          labels:
+            type: object
+            additionalProperties:
+              type: string
+    required:
+      - displayName
+  NotificationChannel:
+    type: object
+    title: Notification Channel
+    description: A channel through which alert notifications are sent.
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+        description: The type of notification channel (email, sms, slack, etc.).
+      displayName:
+        type: string
+      labels:
+        type: object
+        additionalProperties:
+          type: string
+      enabled:
+        type: boolean
+    required:
+      - type
+      - displayName
+  MetricDescriptor:
+    type: object
+    title: Metric Descriptor
+    description: Defines a metric type and its schema.
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+        description: The metric type identifier.
+      displayName:
+        type: string
+      description:
+        type: string
+      metricKind:
+        type: string
+        enum:
+          - GAUGE
+          - DELTA
+          - CUMULATIVE
+      valueType:
+        type: string
+        enum:
+          - BOOL
+          - INT64
+          - DOUBLE
+          - STRING
+          - DISTRIBUTION
+      unit:
+        type: string
+      labels:
+        type: array
+        items:
+          type: object
+          properties:
+            key:
+              type: string
+            valueType:
+              type: string
+            description:
+              type: string
+    required:
+      - type
+      - metricKind
+      - valueType

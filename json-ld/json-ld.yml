@@ -1,0 +1,44 @@
+"@context":
+  "@vocab": https://schema.org/
+  gcloud: https://cloud.google.com/monitoring/api/ref_v3/rest/v3/
+  name: schema:name
+  description: schema:description
+  url: schema:url
+  TimeSeries:
+    "@id": gcloud:projects.timeSeries
+    "@type": schema:Dataset
+    metric: schema:variableMeasured
+    resource: schema:about
+    metricKind: schema:measurementTechnique
+    valueType: schema:unitCode
+    points: schema:datasetTimeInterval
+  AlertPolicy:
+    "@id": gcloud:projects.alertPolicies
+    "@type": schema:Action
+    displayName: schema:name
+    conditions: schema:object
+    combiner: schema:actionOption
+    enabled: schema:actionStatus
+    notificationChannels: schema:recipient
+  UptimeCheckConfig:
+    "@id": gcloud:projects.uptimeCheckConfigs
+    "@type": schema:MonitorAction
+    displayName: schema:name
+    period: schema:repeatFrequency
+    timeout: schema:duration
+    httpCheck: schema:target
+  NotificationChannel:
+    "@id": gcloud:projects.notificationChannels
+    "@type": schema:ContactPoint
+    type: schema:contactType
+    displayName: schema:name
+    enabled: schema:actionStatus
+  MetricDescriptor:
+    "@id": gcloud:projects.metricDescriptors
+    "@type": schema:PropertyValue
+    type: schema:propertyID
+    displayName: schema:name
+    description: schema:description
+    metricKind: schema:measurementTechnique
+    valueType: schema:unitCode
+    unit: schema:unitText

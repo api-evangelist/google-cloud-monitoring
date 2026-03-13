@@ -1,0 +1,563 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Monitoring API
+  description: >-
+    The Cloud Monitoring API provides programmatic access to time series data,
+    alert policies, notification channels, uptime checks, dashboards, metric
+    descriptors, monitored resource descriptors, and service level objectives
+    for comprehensive infrastructure and application monitoring.
+  version: v3
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/monitoring
+externalDocs:
+  description: Google Cloud Monitoring Documentation
+  url: https://cloud.google.com/monitoring/docs
+servers:
+  - url: https://monitoring.googleapis.com
+paths:
+  /v3/projects/{projectId}/timeSeries:
+    get:
+      operationId: listTimeSeries
+      summary: List Time Series
+      description: Lists time series that match a filter.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: filter
+          in: query
+          schema:
+            type: string
+          description: Monitoring filter specifying the time series to return.
+        - name: interval.startTime
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: interval.endTime
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTimeSeriesResponse'
+    post:
+      operationId: createTimeSeries
+      summary: Create Time Series
+      description: Creates or adds data to one or more time series.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTimeSeriesRequest'
+      responses:
+        '200':
+          description: Successful response
+  /v3/projects/{projectId}/alertPolicies:
+    get:
+      operationId: listAlertPolicies
+      summary: List Alert Policies
+      description: Lists the existing alerting policies for the project.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAlertPoliciesResponse'
+    post:
+      operationId: createAlertPolicy
+      summary: Create Alert Policy
+      description: Creates a new alerting policy.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertPolicy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertPolicy'
+  /v3/projects/{projectId}/alertPolicies/{alertPolicyId}:
+    get:
+      operationId: getAlertPolicy
+      summary: Get Alert Policy
+      description: Gets a single alerting policy.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: alertPolicyId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertPolicy'
+    patch:
+      operationId: updateAlertPolicy
+      summary: Update Alert Policy
+      description: Updates an alerting policy.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: alertPolicyId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertPolicy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertPolicy'
+    delete:
+      operationId: deleteAlertPolicy
+      summary: Delete Alert Policy
+      description: Deletes an alerting policy.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: alertPolicyId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+  /v3/projects/{projectId}/uptimeCheckConfigs:
+    get:
+      operationId: listUptimeCheckConfigs
+      summary: List Uptime Check Configs
+      description: Lists the existing uptime check configurations.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListUptimeCheckConfigsResponse'
+    post:
+      operationId: createUptimeCheckConfig
+      summary: Create Uptime Check Config
+      description: Creates a new uptime check configuration.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UptimeCheckConfig'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UptimeCheckConfig'
+  /v3/projects/{projectId}/notificationChannels:
+    get:
+      operationId: listNotificationChannels
+      summary: List Notification Channels
+      description: Lists the notification channels for the project.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNotificationChannelsResponse'
+    post:
+      operationId: createNotificationChannel
+      summary: Create Notification Channel
+      description: Creates a new notification channel.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationChannel'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationChannel'
+  /v3/projects/{projectId}/metricDescriptors:
+    get:
+      operationId: listMetricDescriptors
+      summary: List Metric Descriptors
+      description: Lists metric descriptors that match a filter.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMetricDescriptorsResponse'
+    post:
+      operationId: createMetricDescriptor
+      summary: Create Metric Descriptor
+      description: Creates a new metric descriptor for custom metrics.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetricDescriptor'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricDescriptor'
+  /v3/projects/{projectId}/groups:
+    get:
+      operationId: listGroups
+      summary: List Groups
+      description: Lists the existing groups for the project.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGroupsResponse'
+components:
+  schemas:
+    TimeSeries:
+      type: object
+      description: A collection of data points for a metric.
+      properties:
+        metric:
+          type: object
+          properties:
+            type:
+              type: string
+            labels:
+              type: object
+              additionalProperties:
+                type: string
+        resource:
+          type: object
+          properties:
+            type:
+              type: string
+            labels:
+              type: object
+              additionalProperties:
+                type: string
+        metricKind:
+          type: string
+          enum:
+            - GAUGE
+            - DELTA
+            - CUMULATIVE
+        valueType:
+          type: string
+          enum:
+            - BOOL
+            - INT64
+            - DOUBLE
+            - STRING
+            - DISTRIBUTION
+        points:
+          type: array
+          items:
+            $ref: '#/components/schemas/Point'
+    Point:
+      type: object
+      properties:
+        interval:
+          type: object
+          properties:
+            startTime:
+              type: string
+              format: date-time
+            endTime:
+              type: string
+              format: date-time
+        value:
+          type: object
+          properties:
+            boolValue:
+              type: boolean
+            int64Value:
+              type: string
+            doubleValue:
+              type: number
+            stringValue:
+              type: string
+    AlertPolicy:
+      type: object
+      description: A policy for generating alerts.
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        documentation:
+          type: object
+          properties:
+            content:
+              type: string
+            mimeType:
+              type: string
+        conditions:
+          type: array
+          items:
+            type: object
+        combiner:
+          type: string
+          enum:
+            - AND
+            - OR
+            - AND_WITH_MATCHING_RESOURCE
+        enabled:
+          type: boolean
+        notificationChannels:
+          type: array
+          items:
+            type: string
+    UptimeCheckConfig:
+      type: object
+      description: Configuration for an uptime check.
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        period:
+          type: string
+        timeout:
+          type: string
+        httpCheck:
+          type: object
+          properties:
+            path:
+              type: string
+            port:
+              type: integer
+            useSsl:
+              type: boolean
+        monitoredResource:
+          type: object
+          properties:
+            type:
+              type: string
+            labels:
+              type: object
+              additionalProperties:
+                type: string
+    NotificationChannel:
+      type: object
+      description: A notification channel for alerting.
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        displayName:
+          type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        enabled:
+          type: boolean
+    MetricDescriptor:
+      type: object
+      description: Defines a metric type and its schema.
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        metricKind:
+          type: string
+          enum:
+            - GAUGE
+            - DELTA
+            - CUMULATIVE
+        valueType:
+          type: string
+          enum:
+            - BOOL
+            - INT64
+            - DOUBLE
+            - STRING
+            - DISTRIBUTION
+        unit:
+          type: string
+        labels:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              valueType:
+                type: string
+              description:
+                type: string
+    CreateTimeSeriesRequest:
+      type: object
+      properties:
+        timeSeries:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSeries'
+    ListTimeSeriesResponse:
+      type: object
+      properties:
+        timeSeries:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSeries'
+        nextPageToken:
+          type: string
+    ListAlertPoliciesResponse:
+      type: object
+      properties:
+        alertPolicies:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertPolicy'
+        nextPageToken:
+          type: string
+    ListUptimeCheckConfigsResponse:
+      type: object
+      properties:
+        uptimeCheckConfigs:
+          type: array
+          items:
+            $ref: '#/components/schemas/UptimeCheckConfig'
+        nextPageToken:
+          type: string
+    ListNotificationChannelsResponse:
+      type: object
+      properties:
+        notificationChannels:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationChannel'
+        nextPageToken:
+          type: string
+    ListMetricDescriptorsResponse:
+      type: object
+      properties:
+        metricDescriptors:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDescriptor'
+        nextPageToken:
+          type: string
+    ListGroupsResponse:
+      type: object
+      properties:
+        group:
+          type: array
+          items:
+            type: object
+        nextPageToken:
+          type: string
