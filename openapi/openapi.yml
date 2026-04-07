@@ -19,7 +19,7 @@ paths:
   /v3/projects/{projectId}/timeSeries:
     get:
       operationId: listTimeSeries
-      summary: List Time Series
+      summary: Google Cloud Monitoring List Time Series
       description: Lists time series that match a filter.
       parameters:
         - name: projectId
@@ -51,7 +51,7 @@ paths:
                 $ref: '#/components/schemas/ListTimeSeriesResponse'
     post:
       operationId: createTimeSeries
-      summary: Create Time Series
+      summary: Google Cloud Monitoring Create Time Series
       description: Creates or adds data to one or more time series.
       parameters:
         - name: projectId
@@ -71,7 +71,7 @@ paths:
   /v3/projects/{projectId}/alertPolicies:
     get:
       operationId: listAlertPolicies
-      summary: List Alert Policies
+      summary: Google Cloud Monitoring List Alert Policies
       description: Lists the existing alerting policies for the project.
       parameters:
         - name: projectId
@@ -88,7 +88,7 @@ paths:
                 $ref: '#/components/schemas/ListAlertPoliciesResponse'
     post:
       operationId: createAlertPolicy
-      summary: Create Alert Policy
+      summary: Google Cloud Monitoring Create Alert Policy
       description: Creates a new alerting policy.
       parameters:
         - name: projectId
@@ -112,7 +112,7 @@ paths:
   /v3/projects/{projectId}/alertPolicies/{alertPolicyId}:
     get:
       operationId: getAlertPolicy
-      summary: Get Alert Policy
+      summary: Google Cloud Monitoring Get Alert Policy
       description: Gets a single alerting policy.
       parameters:
         - name: projectId
@@ -134,7 +134,7 @@ paths:
                 $ref: '#/components/schemas/AlertPolicy'
     patch:
       operationId: updateAlertPolicy
-      summary: Update Alert Policy
+      summary: Google Cloud Monitoring Update Alert Policy
       description: Updates an alerting policy.
       parameters:
         - name: projectId
@@ -162,7 +162,7 @@ paths:
                 $ref: '#/components/schemas/AlertPolicy'
     delete:
       operationId: deleteAlertPolicy
-      summary: Delete Alert Policy
+      summary: Google Cloud Monitoring Delete Alert Policy
       description: Deletes an alerting policy.
       parameters:
         - name: projectId
@@ -181,7 +181,7 @@ paths:
   /v3/projects/{projectId}/uptimeCheckConfigs:
     get:
       operationId: listUptimeCheckConfigs
-      summary: List Uptime Check Configs
+      summary: Google Cloud Monitoring List Uptime Check Configs
       description: Lists the existing uptime check configurations.
       parameters:
         - name: projectId
@@ -198,7 +198,7 @@ paths:
                 $ref: '#/components/schemas/ListUptimeCheckConfigsResponse'
     post:
       operationId: createUptimeCheckConfig
-      summary: Create Uptime Check Config
+      summary: Google Cloud Monitoring Create Uptime Check Config
       description: Creates a new uptime check configuration.
       parameters:
         - name: projectId
@@ -222,7 +222,7 @@ paths:
   /v3/projects/{projectId}/notificationChannels:
     get:
       operationId: listNotificationChannels
-      summary: List Notification Channels
+      summary: Google Cloud Monitoring List Notification Channels
       description: Lists the notification channels for the project.
       parameters:
         - name: projectId
@@ -239,7 +239,7 @@ paths:
                 $ref: '#/components/schemas/ListNotificationChannelsResponse'
     post:
       operationId: createNotificationChannel
-      summary: Create Notification Channel
+      summary: Google Cloud Monitoring Create Notification Channel
       description: Creates a new notification channel.
       parameters:
         - name: projectId
@@ -263,7 +263,7 @@ paths:
   /v3/projects/{projectId}/metricDescriptors:
     get:
       operationId: listMetricDescriptors
-      summary: List Metric Descriptors
+      summary: Google Cloud Monitoring List Metric Descriptors
       description: Lists metric descriptors that match a filter.
       parameters:
         - name: projectId
@@ -280,7 +280,7 @@ paths:
                 $ref: '#/components/schemas/ListMetricDescriptorsResponse'
     post:
       operationId: createMetricDescriptor
-      summary: Create Metric Descriptor
+      summary: Google Cloud Monitoring Create Metric Descriptor
       description: Creates a new metric descriptor for custom metrics.
       parameters:
         - name: projectId
@@ -304,7 +304,7 @@ paths:
   /v3/projects/{projectId}/groups:
     get:
       operationId: listGroups
-      summary: List Groups
+      summary: Google Cloud Monitoring List Groups
       description: Lists the existing groups for the project.
       parameters:
         - name: projectId
