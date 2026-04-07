@@ -49,6 +49,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTimeSeriesResponse'
+      tags:
+        - Projects
     post:
       operationId: createTimeSeries
       summary: Google Cloud Monitoring Create Time Series
@@ -68,6 +70,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - Projects
   /v3/projects/{projectId}/alertPolicies:
     get:
       operationId: listAlertPolicies
@@ -86,6 +90,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAlertPoliciesResponse'
+      tags:
+        - Projects
     post:
       operationId: createAlertPolicy
       summary: Google Cloud Monitoring Create Alert Policy
@@ -109,6 +115,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AlertPolicy'
+      tags:
+        - Projects
   /v3/projects/{projectId}/alertPolicies/{alertPolicyId}:
     get:
       operationId: getAlertPolicy
@@ -132,6 +140,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AlertPolicy'
+      tags:
+        - Projects
     patch:
       operationId: updateAlertPolicy
       summary: Google Cloud Monitoring Update Alert Policy
@@ -160,6 +170,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AlertPolicy'
+      tags:
+        - Projects
     delete:
       operationId: deleteAlertPolicy
       summary: Google Cloud Monitoring Delete Alert Policy
@@ -178,6 +190,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - Projects
   /v3/projects/{projectId}/uptimeCheckConfigs:
     get:
       operationId: listUptimeCheckConfigs
@@ -196,6 +210,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListUptimeCheckConfigsResponse'
+      tags:
+        - Projects
     post:
       operationId: createUptimeCheckConfig
       summary: Google Cloud Monitoring Create Uptime Check Config
@@ -219,6 +235,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UptimeCheckConfig'
+      tags:
+        - Projects
   /v3/projects/{projectId}/notificationChannels:
     get:
       operationId: listNotificationChannels
@@ -237,6 +255,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListNotificationChannelsResponse'
+      tags:
+        - Projects
     post:
       operationId: createNotificationChannel
       summary: Google Cloud Monitoring Create Notification Channel
@@ -260,6 +280,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotificationChannel'
+      tags:
+        - Projects
   /v3/projects/{projectId}/metricDescriptors:
     get:
       operationId: listMetricDescriptors
@@ -278,6 +300,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListMetricDescriptorsResponse'
+      tags:
+        - Projects
     post:
       operationId: createMetricDescriptor
       summary: Google Cloud Monitoring Create Metric Descriptor
@@ -301,6 +325,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MetricDescriptor'
+      tags:
+        - Projects
   /v3/projects/{projectId}/groups:
     get:
       operationId: listGroups
@@ -319,6 +345,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListGroupsResponse'
+      tags:
+        - Projects
 components:
   schemas:
     TimeSeries:
@@ -561,3 +589,5 @@ components:
             type: object
         nextPageToken:
           type: string
+tags:
+  - name: Projects
