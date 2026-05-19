@@ -1,0 +1,636 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Monitoring API — Projects
+  description: 'Google Cloud Monitoring API — Projects. 14 operations. Lead operation: Google Cloud Monitoring List Alert
+    Policies. Self-contained Naftiko capability covering one Google Cloud Monitoring business surface.'
+  tags:
+  - Google Cloud Monitoring
+  - Projects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_MONITORING_API_KEY: GOOGLE_CLOUD_MONITORING_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openapi-projects
+    baseUri: https://monitoring.googleapis.com
+    description: Google Cloud Monitoring API — Projects business capability. Self-contained, no shared references.
+    resources:
+    - name: v3-projects-projectId-alertPolicies
+      path: /v3/projects/{projectId}/alertPolicies
+      operations:
+      - name: listalertpolicies
+        method: GET
+        description: Google Cloud Monitoring List Alert Policies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+      - name: createalertpolicy
+        method: POST
+        description: Google Cloud Monitoring Create Alert Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-projects-projectId-alertPolicies-alertPolicyId
+      path: /v3/projects/{projectId}/alertPolicies/{alertPolicyId}
+      operations:
+      - name: getalertpolicy
+        method: GET
+        description: Google Cloud Monitoring Get Alert Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: alertPolicyId
+          in: path
+          type: string
+          required: true
+      - name: updatealertpolicy
+        method: PATCH
+        description: Google Cloud Monitoring Update Alert Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: alertPolicyId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletealertpolicy
+        method: DELETE
+        description: Google Cloud Monitoring Delete Alert Policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: alertPolicyId
+          in: path
+          type: string
+          required: true
+    - name: v3-projects-projectId-groups
+      path: /v3/projects/{projectId}/groups
+      operations:
+      - name: listgroups
+        method: GET
+        description: Google Cloud Monitoring List Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+    - name: v3-projects-projectId-metricDescriptors
+      path: /v3/projects/{projectId}/metricDescriptors
+      operations:
+      - name: listmetricdescriptors
+        method: GET
+        description: Google Cloud Monitoring List Metric Descriptors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+      - name: createmetricdescriptor
+        method: POST
+        description: Google Cloud Monitoring Create Metric Descriptor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-projects-projectId-notificationChannels
+      path: /v3/projects/{projectId}/notificationChannels
+      operations:
+      - name: listnotificationchannels
+        method: GET
+        description: Google Cloud Monitoring List Notification Channels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+      - name: createnotificationchannel
+        method: POST
+        description: Google Cloud Monitoring Create Notification Channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-projects-projectId-timeSeries
+      path: /v3/projects/{projectId}/timeSeries
+      operations:
+      - name: listtimeseries
+        method: GET
+        description: Google Cloud Monitoring List Time Series
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: filter
+          in: query
+          type: string
+          description: Monitoring filter specifying the time series to return.
+        - name: interval.startTime
+          in: query
+          type: string
+        - name: interval.endTime
+          in: query
+          type: string
+      - name: createtimeseries
+        method: POST
+        description: Google Cloud Monitoring Create Time Series
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-projects-projectId-uptimeCheckConfigs
+      path: /v3/projects/{projectId}/uptimeCheckConfigs
+      operations:
+      - name: listuptimecheckconfigs
+        method: GET
+        description: Google Cloud Monitoring List Uptime Check Configs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+      - name: createuptimecheckconfig
+        method: POST
+        description: Google Cloud Monitoring Create Uptime Check Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: openapi-projects-rest
+    port: 8080
+    description: REST adapter for Google Cloud Monitoring API — Projects. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v3/projects/{projectid}/alertpolicies
+      name: v3-projects-projectid-alertpolicies
+      description: REST surface for v3-projects-projectId-alertPolicies.
+      operations:
+      - method: GET
+        name: listalertpolicies
+        description: Google Cloud Monitoring List Alert Policies
+        call: openapi-projects.listalertpolicies
+        with:
+          projectId: rest.projectId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createalertpolicy
+        description: Google Cloud Monitoring Create Alert Policy
+        call: openapi-projects.createalertpolicy
+        with:
+          projectId: rest.projectId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/projects/{projectid}/alertpolicies/{alertpolicyid}
+      name: v3-projects-projectid-alertpolicies-alertpolicyid
+      description: REST surface for v3-projects-projectId-alertPolicies-alertPolicyId.
+      operations:
+      - method: GET
+        name: getalertpolicy
+        description: Google Cloud Monitoring Get Alert Policy
+        call: openapi-projects.getalertpolicy
+        with:
+          projectId: rest.projectId
+          alertPolicyId: rest.alertPolicyId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatealertpolicy
+        description: Google Cloud Monitoring Update Alert Policy
+        call: openapi-projects.updatealertpolicy
+        with:
+          projectId: rest.projectId
+          alertPolicyId: rest.alertPolicyId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletealertpolicy
+        description: Google Cloud Monitoring Delete Alert Policy
+        call: openapi-projects.deletealertpolicy
+        with:
+          projectId: rest.projectId
+          alertPolicyId: rest.alertPolicyId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/projects/{projectid}/groups
+      name: v3-projects-projectid-groups
+      description: REST surface for v3-projects-projectId-groups.
+      operations:
+      - method: GET
+        name: listgroups
+        description: Google Cloud Monitoring List Groups
+        call: openapi-projects.listgroups
+        with:
+          projectId: rest.projectId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/projects/{projectid}/metricdescriptors
+      name: v3-projects-projectid-metricdescriptors
+      description: REST surface for v3-projects-projectId-metricDescriptors.
+      operations:
+      - method: GET
+        name: listmetricdescriptors
+        description: Google Cloud Monitoring List Metric Descriptors
+        call: openapi-projects.listmetricdescriptors
+        with:
+          projectId: rest.projectId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createmetricdescriptor
+        description: Google Cloud Monitoring Create Metric Descriptor
+        call: openapi-projects.createmetricdescriptor
+        with:
+          projectId: rest.projectId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/projects/{projectid}/notificationchannels
+      name: v3-projects-projectid-notificationchannels
+      description: REST surface for v3-projects-projectId-notificationChannels.
+      operations:
+      - method: GET
+        name: listnotificationchannels
+        description: Google Cloud Monitoring List Notification Channels
+        call: openapi-projects.listnotificationchannels
+        with:
+          projectId: rest.projectId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createnotificationchannel
+        description: Google Cloud Monitoring Create Notification Channel
+        call: openapi-projects.createnotificationchannel
+        with:
+          projectId: rest.projectId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/projects/{projectid}/timeseries
+      name: v3-projects-projectid-timeseries
+      description: REST surface for v3-projects-projectId-timeSeries.
+      operations:
+      - method: GET
+        name: listtimeseries
+        description: Google Cloud Monitoring List Time Series
+        call: openapi-projects.listtimeseries
+        with:
+          projectId: rest.projectId
+          filter: rest.filter
+          interval.startTime: rest.interval.startTime
+          interval.endTime: rest.interval.endTime
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createtimeseries
+        description: Google Cloud Monitoring Create Time Series
+        call: openapi-projects.createtimeseries
+        with:
+          projectId: rest.projectId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/projects/{projectid}/uptimecheckconfigs
+      name: v3-projects-projectid-uptimecheckconfigs
+      description: REST surface for v3-projects-projectId-uptimeCheckConfigs.
+      operations:
+      - method: GET
+        name: listuptimecheckconfigs
+        description: Google Cloud Monitoring List Uptime Check Configs
+        call: openapi-projects.listuptimecheckconfigs
+        with:
+          projectId: rest.projectId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createuptimecheckconfig
+        description: Google Cloud Monitoring Create Uptime Check Config
+        call: openapi-projects.createuptimecheckconfig
+        with:
+          projectId: rest.projectId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openapi-projects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Cloud Monitoring API — Projects. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-cloud-monitoring-list-alert
+      description: Google Cloud Monitoring List Alert Policies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-projects.listalertpolicies
+      with:
+        projectId: tools.projectId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-create-alert
+      description: Google Cloud Monitoring Create Alert Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openapi-projects.createalertpolicy
+      with:
+        projectId: tools.projectId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-get-alert
+      description: Google Cloud Monitoring Get Alert Policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-projects.getalertpolicy
+      with:
+        projectId: tools.projectId
+        alertPolicyId: tools.alertPolicyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-update-alert
+      description: Google Cloud Monitoring Update Alert Policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: openapi-projects.updatealertpolicy
+      with:
+        projectId: tools.projectId
+        alertPolicyId: tools.alertPolicyId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-delete-alert
+      description: Google Cloud Monitoring Delete Alert Policy
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: openapi-projects.deletealertpolicy
+      with:
+        projectId: tools.projectId
+        alertPolicyId: tools.alertPolicyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-list-groups
+      description: Google Cloud Monitoring List Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-projects.listgroups
+      with:
+        projectId: tools.projectId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-list-metric
+      description: Google Cloud Monitoring List Metric Descriptors
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-projects.listmetricdescriptors
+      with:
+        projectId: tools.projectId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-create-metric
+      description: Google Cloud Monitoring Create Metric Descriptor
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openapi-projects.createmetricdescriptor
+      with:
+        projectId: tools.projectId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-list-notification
+      description: Google Cloud Monitoring List Notification Channels
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-projects.listnotificationchannels
+      with:
+        projectId: tools.projectId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-create-notification
+      description: Google Cloud Monitoring Create Notification Channel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openapi-projects.createnotificationchannel
+      with:
+        projectId: tools.projectId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-list-time
+      description: Google Cloud Monitoring List Time Series
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-projects.listtimeseries
+      with:
+        projectId: tools.projectId
+        filter: tools.filter
+        interval.startTime: tools.interval.startTime
+        interval.endTime: tools.interval.endTime
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-create-time
+      description: Google Cloud Monitoring Create Time Series
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openapi-projects.createtimeseries
+      with:
+        projectId: tools.projectId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-list-uptime
+      description: Google Cloud Monitoring List Uptime Check Configs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-projects.listuptimecheckconfigs
+      with:
+        projectId: tools.projectId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-monitoring-create-uptime
+      description: Google Cloud Monitoring Create Uptime Check Config
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: openapi-projects.createuptimecheckconfig
+      with:
+        projectId: tools.projectId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
