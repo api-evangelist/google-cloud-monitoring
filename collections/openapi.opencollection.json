@@ -1,0 +1,325 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Monitoring API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Monitoring List Time Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/timeSeries",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Monitoring filter specifying the time series to return."
+              },
+              {
+                "name": "interval.startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interval.endTime",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists time series that match a filter."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring Create Time Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/timeSeries",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or adds data to one or more time series."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring List Alert Policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/alertPolicies",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the existing alerting policies for the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring Create Alert Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/alertPolicies",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new alerting policy."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring Get Alert Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/alertPolicies/:alertPolicyId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "alertPolicyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets a single alerting policy."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring Update Alert Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/alertPolicies/:alertPolicyId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "alertPolicyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an alerting policy."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring Delete Alert Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/alertPolicies/:alertPolicyId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "alertPolicyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an alerting policy."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring List Uptime Check Configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/uptimeCheckConfigs",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the existing uptime check configurations."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring Create Uptime Check Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/uptimeCheckConfigs",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new uptime check configuration."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring List Notification Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/notificationChannels",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the notification channels for the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring Create Notification Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/notificationChannels",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new notification channel."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring List Metric Descriptors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/metricDescriptors",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists metric descriptors that match a filter."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring Create Metric Descriptor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/metricDescriptors",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new metric descriptor for custom metrics."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Monitoring List Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://monitoring.googleapis.com/v3/projects/:projectId/groups",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the existing groups for the project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
