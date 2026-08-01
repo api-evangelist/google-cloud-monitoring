@@ -1,0 +1,14 @@
+{
+  "provider": "google-cloud-monitoring",
+  "sources": [
+    "google-cloud-monitoring-projects-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-cloud-monitoring-projects-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
