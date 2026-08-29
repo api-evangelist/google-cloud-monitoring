@@ -4,6 +4,18 @@ description: >-
   Google Cloud Monitoring provides comprehensive monitoring and observability for cloud infrastructure and applications.
   It collects metrics, events, and metadata from Google Cloud services, hosted uptime probes, and application
   instrumentation, enabling dashboards, alerting, uptime monitoring, and service level objective tracking.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
