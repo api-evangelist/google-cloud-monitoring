@@ -68,7 +68,7 @@ apis:
     url: json-ld/json-ld.yml
 common:
   - type: Website
-    url: https://www.google.com/
+    url: https://cloud.google.com/monitoring
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-cloud-monitoring/overview
   - type: AgenticAccess
