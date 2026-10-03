@@ -344,6 +344,49 @@ paths:
       - Projects
 components:
   schemas:
+    ListGroupsResponse:
+      type: object
+      properties:
+        group:
+          type: array
+          items:
+            type: object
+        nextPageToken:
+          type: string
+    ListNotificationChannelsResponse:
+      type: object
+      properties:
+        notificationChannels:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationChannel'
+        nextPageToken:
+          type: string
+    NotificationChannel:
+      type: object
+      description: A notification channel for alerting.
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        displayName:
+          type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        enabled:
+          type: boolean
+    ListAlertPoliciesResponse:
+      type: object
+      properties:
+        alertPolicies:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertPolicy'
+        nextPageToken:
+          type: string
     ListUptimeCheckConfigsResponse:
       type: object
       properties:
@@ -407,6 +450,36 @@ components:
               type: number
             stringValue:
               type: string
+    UptimeCheckConfig:
+      type: object
+      description: Configuration for an uptime check.
+      properties:
+        name:
+          type: string
+        displayName:
+          type: string
+        period:
+          type: string
+        timeout:
+          type: string
+        httpCheck:
+          type: object
+          properties:
+            path:
+              type: string
+            port:
+              type: integer
+            useSsl:
+              type: boolean
+        monitoredResource:
+          type: object
+          properties:
+            type:
+              type: string
+            labels:
+              type: object
+              additionalProperties:
+                type: string
     ListMetricDescriptorsResponse:
       type: object
       properties:
@@ -416,6 +489,45 @@ components:
             $ref: '#/components/schemas/MetricDescriptor'
         nextPageToken:
           type: string
+    MetricDescriptor:
+      type: object
+      description: Defines a metric type and its schema.
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        metricKind:
+          type: string
+          enum:
+          - GAUGE
+          - DELTA
+          - CUMULATIVE
+        valueType:
+          type: string
+          enum:
+          - BOOL
+          - INT64
+          - DOUBLE
+          - STRING
+          - DISTRIBUTION
+        unit:
+          type: string
+        labels:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              valueType:
+                type: string
+              description:
+                type: string
     TimeSeries:
       type: object
       description: A collection of data points for a metric.
@@ -456,116 +568,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Point'
-    MetricDescriptor:
-      type: object
-      description: Defines a metric type and its schema.
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-        displayName:
-          type: string
-        description:
-          type: string
-        metricKind:
-          type: string
-          enum:
-          - GAUGE
-          - DELTA
-          - CUMULATIVE
-        valueType:
-          type: string
-          enum:
-          - BOOL
-          - INT64
-          - DOUBLE
-          - STRING
-          - DISTRIBUTION
-        unit:
-          type: string
-        labels:
-          type: array
-          items:
-            type: object
-            properties:
-              key:
-                type: string
-              valueType:
-                type: string
-              description:
-                type: string
-    ListNotificationChannelsResponse:
-      type: object
-      properties:
-        notificationChannels:
-          type: array
-          items:
-            $ref: '#/components/schemas/NotificationChannel'
-        nextPageToken:
-          type: string
-    NotificationChannel:
-      type: object
-      description: A notification channel for alerting.
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-        displayName:
-          type: string
-        labels:
-          type: object
-          additionalProperties:
-            type: string
-        enabled:
-          type: boolean
-    ListAlertPoliciesResponse:
-      type: object
-      properties:
-        alertPolicies:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertPolicy'
-        nextPageToken:
-          type: string
-    UptimeCheckConfig:
-      type: object
-      description: Configuration for an uptime check.
-      properties:
-        name:
-          type: string
-        displayName:
-          type: string
-        period:
-          type: string
-        timeout:
-          type: string
-        httpCheck:
-          type: object
-          properties:
-            path:
-              type: string
-            port:
-              type: integer
-            useSsl:
-              type: boolean
-        monitoredResource:
-          type: object
-          properties:
-            type:
-              type: string
-            labels:
-              type: object
-              additionalProperties:
-                type: string
-    CreateTimeSeriesRequest:
-      type: object
-      properties:
-        timeSeries:
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeSeries'
     ListTimeSeriesResponse:
       type: object
       properties:
@@ -575,15 +577,13 @@ components:
             $ref: '#/components/schemas/TimeSeries'
         nextPageToken:
           type: string
-    ListGroupsResponse:
+    CreateTimeSeriesRequest:
       type: object
       properties:
-        group:
+        timeSeries:
           type: array
           items:
-            type: object
-        nextPageToken:
-          type: string
+            $ref: '#/components/schemas/TimeSeries'
 externalDocs:
   description: Google Cloud Monitoring Documentation
   url: https://cloud.google.com/monitoring/docs
