@@ -344,49 +344,54 @@ paths:
       - Projects
 components:
   schemas:
-    ListGroupsResponse:
+    ListTimeSeriesResponse:
       type: object
       properties:
-        group:
+        timeSeries:
           type: array
           items:
-            type: object
+            $ref: '#/components/schemas/TimeSeries'
         nextPageToken:
           type: string
-    ListNotificationChannelsResponse:
+    ListMetricDescriptorsResponse:
       type: object
       properties:
-        notificationChannels:
+        metricDescriptors:
           type: array
           items:
-            $ref: '#/components/schemas/NotificationChannel'
+            $ref: '#/components/schemas/MetricDescriptor'
         nextPageToken:
           type: string
-    NotificationChannel:
+    UptimeCheckConfig:
       type: object
-      description: A notification channel for alerting.
+      description: Configuration for an uptime check.
       properties:
         name:
           type: string
-        type:
-          type: string
         displayName:
           type: string
-        labels:
-          type: object
-          additionalProperties:
-            type: string
-        enabled:
-          type: boolean
-    ListAlertPoliciesResponse:
-      type: object
-      properties:
-        alertPolicies:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertPolicy'
-        nextPageToken:
+        period:
           type: string
+        timeout:
+          type: string
+        httpCheck:
+          type: object
+          properties:
+            path:
+              type: string
+            port:
+              type: integer
+            useSsl:
+              type: boolean
+        monitoredResource:
+          type: object
+          properties:
+            type:
+              type: string
+            labels:
+              type: object
+              additionalProperties:
+                type: string
     ListUptimeCheckConfigsResponse:
       type: object
       properties:
@@ -450,84 +455,15 @@ components:
               type: number
             stringValue:
               type: string
-    UptimeCheckConfig:
-      type: object
-      description: Configuration for an uptime check.
-      properties:
-        name:
-          type: string
-        displayName:
-          type: string
-        period:
-          type: string
-        timeout:
-          type: string
-        httpCheck:
-          type: object
-          properties:
-            path:
-              type: string
-            port:
-              type: integer
-            useSsl:
-              type: boolean
-        monitoredResource:
-          type: object
-          properties:
-            type:
-              type: string
-            labels:
-              type: object
-              additionalProperties:
-                type: string
-    ListMetricDescriptorsResponse:
+    ListAlertPoliciesResponse:
       type: object
       properties:
-        metricDescriptors:
+        alertPolicies:
           type: array
           items:
-            $ref: '#/components/schemas/MetricDescriptor'
+            $ref: '#/components/schemas/AlertPolicy'
         nextPageToken:
           type: string
-    MetricDescriptor:
-      type: object
-      description: Defines a metric type and its schema.
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-        displayName:
-          type: string
-        description:
-          type: string
-        metricKind:
-          type: string
-          enum:
-          - GAUGE
-          - DELTA
-          - CUMULATIVE
-        valueType:
-          type: string
-          enum:
-          - BOOL
-          - INT64
-          - DOUBLE
-          - STRING
-          - DISTRIBUTION
-        unit:
-          type: string
-        labels:
-          type: array
-          items:
-            type: object
-            properties:
-              key:
-                type: string
-              valueType:
-                type: string
-              description:
-                type: string
     TimeSeries:
       type: object
       description: A collection of data points for a metric.
@@ -568,13 +504,22 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Point'
-    ListTimeSeriesResponse:
+    ListGroupsResponse:
       type: object
       properties:
-        timeSeries:
+        group:
           type: array
           items:
-            $ref: '#/components/schemas/TimeSeries'
+            type: object
+        nextPageToken:
+          type: string
+    ListNotificationChannelsResponse:
+      type: object
+      properties:
+        notificationChannels:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationChannel'
         nextPageToken:
           type: string
     CreateTimeSeriesRequest:
@@ -584,6 +529,61 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TimeSeries'
+    MetricDescriptor:
+      type: object
+      description: Defines a metric type and its schema.
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        metricKind:
+          type: string
+          enum:
+          - GAUGE
+          - DELTA
+          - CUMULATIVE
+        valueType:
+          type: string
+          enum:
+          - BOOL
+          - INT64
+          - DOUBLE
+          - STRING
+          - DISTRIBUTION
+        unit:
+          type: string
+        labels:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              valueType:
+                type: string
+              description:
+                type: string
+    NotificationChannel:
+      type: object
+      description: A notification channel for alerting.
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        displayName:
+          type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        enabled:
+          type: boolean
 externalDocs:
   description: Google Cloud Monitoring Documentation
   url: https://cloud.google.com/monitoring/docs
